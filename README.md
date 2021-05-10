@@ -5,9 +5,12 @@
 ```batch
 i686-w64-mingw32-gcc zouk.c -o zouk -lwinmm
 ```
+## zouk.mp3 ----> zouk.wav (header)
+```batch
+ffmpeg -i zouk.mp3 -c copy -f wav zoukW.wav
+```
 
-
-## Transform zouk.mp3 in hex array
+## Transform zoukW.wav in hex array
 ```batch
 xxd -i zoukW.wav > ~/labo/malwares/jmr.c 
 ```
