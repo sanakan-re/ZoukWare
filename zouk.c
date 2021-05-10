@@ -5,19 +5,27 @@
 
 int main() {
 
-    FILE *fp = fopen("zoukW.wav", "rb");
-
-    if (!fp) {
-        fprintf(stderr, "Error opening file 'zoukW.wav'\n");
-        return 1;
+    unsigned char *b = malloc(zoukW_wav_len);
+    if (b == NULL) {
+        fprintf(stderr, "Fatal: failed to allocate %zu bytes.\n", zoukW_wav_len);
+        abort();
     }
 
-    fseek(fp, 0, SEEK_END);
-    const int fsize = ftell(fp);
+    memcpy(b, zoukW_wav, zoukW_wav_len);
 
-    printf("%d", fsize);
+    int i;
+    for (i=0; i<10; i++) {
+        printf("%x", b[i]);
+    }
 
-    fclose(fp);
+    BYTE* pb = (BYTE *)b;
+
+    PlaySound((LPCSTR) pb, NULL, SND_MEMORY | SND_SYNC);
+
+    printf("\n");
+
+    free(b);
+
 
     //PlaySound((LPCSTR) "C:\\Users\\dim orcus\\Music\\zoukW.wav", NULL, SND_FILENAME | SND_SYNC | SND_LOOP);
 
