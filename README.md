@@ -12,5 +12,5 @@ ffmpeg -i zouk.mp3 -c copy -f wav zoukW.wav
 
 ## Transform zoukW.wav in hex array
 ```batch
-xxd -i zoukW.wav > ~/labo/malwares/jmr.c 
+xxd -i zoukW.wav > jmr.c 
 ```
